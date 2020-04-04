@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AC:HN Turnip Price Calculator</title>
+    <style>
+      #turnip-price-form {
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AC:HN Price Calculator</h1>
+    <h2>Acknowledgement</h2>
+    <p>
+      This work cannot be done without
+      <a href="https://twitter.com/_Ninji">@_Ninji</a>,
+      who disassembled the game executable and published
+      <a href="https://gist.github.com/Treeki/85be14d297c80c8b3c0a76375743325b">a C++ version</a>
+      of the price calculation algorithm.
+    </p>
+    <h2>How to Use</h2>
+    <p>
+      Generally, you cannot use this to predict turnip prices because you don't have the seed.
+      However, since seed is a unsigned 32-bit integer, we can enumerate all possibility.
+      On my computer, it takes 16 minutes to enumerate all combination of patterns and seeds.
+    </p>
+    <p>
+      Beside, even if you have the seed. This calculator won't work the first time you buy the turnips,
+      according to <a href="https://twitter.com/_Ninji/status/1245097287136706561?s=20">@_Ninji's reply.</a>
+    </p>
+    <blockquote>
+      One thing that can skew it for reports: the <code>FirstKabuPattern</code> flag
+      (set directly after the first day you buy turnips on your own island - i.e. not travelling)
+      forces pattern 3 and generates a new buy price.
+    </blockquote>
+    <h2>The Calculator</h2>
+    <form id="turnip-price-form">
+      <div>
+        <label>Current Pattern</label>
+        <select id="pattern">
+          <option value="0">0 - high, decreasing, high, decreasing, high</option>
+          <option value="1">1 - decreasing middle, high spike, random low</option>
+          <option value="2">2 - consistently decreasing</option>
+          <option value="3">3 - decreasing, spike, decreasing</option>
+          <option value="4">others</option>
+        </select>
+      </div>
+      <div>
+        <label>Random Seed</label>
+        <input type="number" id="seed" value="0">
+        <button id="generate-seed">Randomize</button>
+      </div>
+      <input type="submit" value="Predict">
+    </form>
+    <p>Next Pattern: <span id="next-pattern">N/A</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Sunday</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>A.M.</th>
+          <td id="item-0">0</td>
+          <td id="item-2">0</td>
+          <td id="item-4">0</td>
+          <td id="item-6">0</td>
+          <td id="item-8">0</td>
+          <td id="item-10">0</td>
+          <td id="item-12">0</td>
+        </tr>
+        <tr>
+          <th>P.M.</th>
+          <td>N/A</td>
+          <td id="item-3">0</td>
+          <td id="item-5">0</td>
+          <td id="item-7">0</td>
+          <td id="item-9">0</td>
+          <td id="item-11">0</td>
+          <td id="item-13">0</td>
+        </tr>
+      </tbody>
+    </table>
+    <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
+    <script src="./bootstrap.js"></script>
+  </body>
+</html>

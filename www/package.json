@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "lodash.random": "^3.2.0",
+    "turnip-price": "file:../pkg"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.0.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
