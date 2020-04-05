@@ -3578,8 +3578,10 @@ tty-browserify@0.0.0:
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
   integrity sha1-oVe6QC2iTpv5V/mqadUk7tQpAaY=
 
-"turnip-price@file:../pkg":
+turnip-price@^0.1.0:
   version "0.1.0"
+  resolved "https://registry.yarnpkg.com/turnip-price/-/turnip-price-0.1.0.tgz#2ba3032d099927101bf726ef057db13f5cc86d43"
+  integrity sha512-a/WmtFTA3luPqxTDXWkniPS4gbbR774QEEeuNul4YFbKgTr7WO33FuCi4RCqVB3/aoWaKBn/+j1wE1103lQisw==
 
 type-is@~1.6.17, type-is@~1.6.18:
   version "1.6.18"

@@ -1,11 +1,12 @@
 {
+  "name": "turnip-price",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "start": "webpack-dev-server"
   },
   "dependencies": {
     "lodash.random": "^3.2.0",
-    "turnip-price": "file:../pkg"
+    "turnip-price": "^0.1.0"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.0",

@@ -1,5 +1,5 @@
 import * as wasm from "turnip-price";
-import { memory } from 'turnip-price/turnip_price_calculator_bg';
+import { memory } from 'turnip-price/turnip_price_bg';
 import random from 'lodash.random';
 
 const explanation = [
