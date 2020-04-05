@@ -1,5 +1,7 @@
 # Turnip Price
 
+[中文版](docs/README_zh-CN.md)
+
 A Rust (and WebAssembly) implementation of the calculator turnip price of Animal Crossing: New Horizon. This project can't be done without [@_Ninji](https://twitter.com/_Ninji)'s [C++ code](https://gist.github.com/Treeki/85be14d297c80c8b3c0a76375743325b) and his disassembly work. You can try the [demo](https://turnip-price.now.sh) online.
 
 ## 🚀 Getting Started
