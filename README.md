@@ -42,7 +42,8 @@ No, yet. *Because you don't have the random seed, which is not exposed to regula
 
 ### 🕸️🦀️ Why do you use WebAssembly?
 
-Because the code involves the practice of reinterpreting unsigned 32-bit integer as 32-bit IEEE 754 floating number. Though I can
+Because the code involves the practice of reinterpreting unsigned 32-bit integer as 32-bit IEEE 754 floating number.
+Though I can do that in JavaScript, using WebAssembly maybe more stable.
 
 ## 🔍 Discovery
 
