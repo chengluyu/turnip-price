@@ -48,9 +48,10 @@ Because the code involves the practice of reinterpreting unsigned 32-bit integer
 
 There are total `4 × 2 ^ 32 = 17,179,869,184` combinations.
 On my machine, it tooks 4 minutes to enumerate all combinations (in 4 threads).
-But it is hard to save all combinations to your disk.
+
+However, it's cost to save all combinations to your disk.
 For each combination, the algorithm will product 13 prices.
-The price is a positive integer from 0 to around 660, which can be represented by a unsiged 10-bit integer.
+Each price is a positive integer from 0 to around 660, which can be represented by an unsigned 10-bit integer.
 Therefore, the uncompressed data size is 2,233,382,993,920 bits, i.e. 260 GBs.
 
 ### 💰 How Much Is The Highest Price?
