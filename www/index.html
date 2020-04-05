@@ -15,27 +15,12 @@
     <h1>AC:HN Price Calculator</h1>
     <h2>Acknowledgement</h2>
     <p>
-      This work cannot be done without
+      This work is based on the
+      <a href="https://gist.github.com/Treeki/85be14d297c80c8b3c0a76375743325b">code</a>
+      from
       <a href="https://twitter.com/_Ninji">@_Ninji</a>,
-      who disassembled the game executable and published
-      <a href="https://gist.github.com/Treeki/85be14d297c80c8b3c0a76375743325b">a C++ version</a>
-      of the price calculation algorithm.
+      who disassembled the game executable.
     </p>
-    <h2>How to Use</h2>
-    <p>
-      Generally, you cannot use this to predict turnip prices because you don't have the seed.
-      However, since seed is a unsigned 32-bit integer, we can enumerate all possibility.
-      On my computer, it takes 16 minutes to enumerate all combination of patterns and seeds.
-    </p>
-    <p>
-      Beside, even if you have the seed. This calculator won't work the first time you buy the turnips,
-      according to <a href="https://twitter.com/_Ninji/status/1245097287136706561?s=20">@_Ninji's reply.</a>
-    </p>
-    <blockquote>
-      One thing that can skew it for reports: the <code>FirstKabuPattern</code> flag
-      (set directly after the first day you buy turnips on your own island - i.e. not travelling)
-      forces pattern 3 and generates a new buy price.
-    </blockquote>
     <h2>The Calculator</h2>
     <form id="turnip-price-form">
       <div>
@@ -92,6 +77,21 @@
         </tr>
       </tbody>
     </table>
+    <h2>FAQ</h2>
+    <h3>Can I Predict the Turnip Price on My Island?</h3>
+    <p>
+      Generally,
+      <strong>you cannot use this to predict turnip prices because you don't have the seed</strong>.
+      However, since seed is a unsigned 32-bit integer, we can enumerate all possibility.
+      On my computer, it takes 16 minutes to enumerate all combination of patterns and seeds on a single thread.
+      Besides, even if you have the seed. This calculator won't work the first time you buy the turnips,
+      according to <a href="https://twitter.com/_Ninji/status/1245097287136706561?s=20">@_Ninji's reply.</a>
+    </p>
+    <blockquote>
+      One thing that can skew it for reports: the <code>FirstKabuPattern</code> flag
+      (set directly after the first day you buy turnips on your own island - i.e. not travelling)
+      forces pattern 3 and generates a new buy price.
+    </blockquote>
     <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
     <script src="./bootstrap.js"></script>
   </body>
