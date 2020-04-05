@@ -1,5 +1,5 @@
 [package]
-name = "turnip-price-calculator"
+name = "turnip-price"
 version = "0.1.0"
 authors = ["chengluyu <chengluyu@live.cn>"]
 edition = "2018"
