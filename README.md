@@ -16,7 +16,7 @@ Also, make sure that the target environment has access to WebAssembly. Then you 
 
 ```js
 import * as wasm from "turnip-price";
-import { memory } from 'turnip-price/turnip_price_calculator_bg';
+import { memory } from 'turnip-price/turnip_price_bg';
 
 function predict(whatPattern, seed) {
   const prediction = wasm.predict(whatPattern, seed);
