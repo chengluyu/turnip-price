@@ -20,19 +20,19 @@ yarn add turnip-price
 import * as wasm from "turnip-price";
 import { memory } from 'turnip-price/turnip_price_bg';
 
-function predict(whatPattern, seed) {
-  const prediction = wasm.predict(whatPattern, seed);
-  const prices = new Int32Array(memory.buffer, prediction.prices(), 14);
-  return prices; // 长度为 14
+function calculate(whatPattern, seed) {
+  const turnip = wasm.calculate(whatPattern, seed);
+  return {
+    buyingPrice: trunip.buying_price,
+    sellingPrices: new Int32Array(memory.buffer, turnip.selling_prices(), 12),
+  };
 }
 ```
 
-关于 `prices` 数组的解释:
+关于 `sellingPrices` 数组的解释:
 
-* 第一个元素是你在周日上午的买入价；
-* 第二个元素没有用；
-* 第二、四、六、八、十、十二个元素分别表示了周一到周六这几天上午的卖出价格；
-* 第三、五、七、九、十一、十三个元素分别表示了周一到周六这几天下午的卖出价格。
+* 第零、二、四、六、八、十个元素分别表示了周一到周六这几天上午的卖出价格；
+* 第一、三、五、七、九、十一个元素分别表示了周一到周六这几天下午的卖出价格。
 
 ## 🤔 问答
 

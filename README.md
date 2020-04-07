@@ -17,22 +17,19 @@ yarn add turnip-price
 Also, make sure that the target environment has access to WebAssembly. Then you can write a calculation function like this.
 
 ```js
-import * as wasm from "turnip-price";
-import { memory } from 'turnip-price/turnip_price_bg';
-
-function predict(whatPattern, seed) {
-  const prediction = wasm.predict(whatPattern, seed);
-  const prices = new Int32Array(memory.buffer, prediction.prices(), 14);
-  return prices; // Length = 14
+function calculate(whatPattern, seed) {
+  const turnip = wasm.calculate(whatPattern, seed);
+  return {
+    buyingPrice: trunip.buying_price,
+    sellingPrices: new Int32Array(memory.buffer, turnip.selling_prices(), 12),
+  };
 }
 ```
 
-Explanation of the `prices` array:
+Explanation of the `sellingPrices` array:
 
-* The first element in the `prices` array indicate the buying price on Sunday;
-* The second element is meaningless;
-* The 2nd, 4th, 6th, 8th, 10th, 12th elements indicate the morning price from Tuesday to Saturday respectively;
-* The 3rd, 5th, 7th, 9th, 11th, 13th elements indicate the afternoon price from Tuesday to Saturday respectively.
+* The 0th, 2nd, 4th, 6th, 8th, 10th elements indicate the morning price from Tuesday to Saturday respectively;
+* The 1st, 3rd, 5th, 7th, 9th, 11th elements indicate the afternoon price from Tuesday to Saturday respectively.
 
 ## 🤔 FAQ
 

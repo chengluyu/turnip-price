@@ -17,18 +17,15 @@ document.getElementById('turnip-price-form').onsubmit = e => {
     e.preventDefault();
     const currentPattern = parseInt(document.getElementById('pattern').value, 10);
     const seed = parseInt(document.getElementById('seed').value, 10);
-    const prediction = wasm.predict(currentPattern, seed);
+    const turnip = wasm.calculate(currentPattern, seed);
     
     // Update the price table.
-    const prices = new Int32Array(memory.buffer, prediction.prices(), 14);
-    for (let i = 0; i < 14; i++) {
-        if (i === 1) {
-            continue;
-        }
-        document.getElementById(`item-${i}`).innerText = prices[i].toString();
-    }
-
+    document.getElementById('buying-price').innerText = turnip.buying_price().toString();
+    const prices = new Int32Array(memory.buffer, turnip.selling_prices(), 12);
+    prices.forEach((value, i) => {
+        document.getElementById(`selling-price-${i}`).innerText = value.toString();
+    });
     // Update the next pattern.
-    const nextPattern = prediction.pattern();
+    const nextPattern = turnip.pattern();
     document.getElementById('next-pattern').innerText = `${nextPattern} (${explanation[nextPattern]})`;
 };
