@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "lodash.random": "^3.2.0",
-    "turnip-price": "^0.1.0"
+    "turnip-price": "^0.1.1"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.0.0",
