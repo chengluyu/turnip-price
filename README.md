@@ -17,6 +17,9 @@ yarn add turnip-price
 Also, make sure that the target environment has access to WebAssembly. Then you can write a calculation function like this.
 
 ```js
+import * as wasm from "turnip-price";
+import { memory } from 'turnip-price/turnip_price_bg';
+
 function calculate(whatPattern, seed) {
   const turnip = wasm.calculate(whatPattern, seed);
   return {
