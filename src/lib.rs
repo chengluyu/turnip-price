@@ -204,3 +204,61 @@ pub fn calculate(what_pattern: u32, seed: u32) -> TurnipPrice {
         selling_prices: sell_prices,
     }
 }
+
+#[wasm_bindgen]
+pub struct Prediction {
+    min_buying_price: u32,
+    max_buying_price: u32,
+    min_selling_prices: [u32; 12],
+    max_selling_prices: [u32; 12],
+}
+
+#[wasm_bindgen]
+impl Prediction {
+    pub fn min_buying_price(&self) -> u32 {
+        self.min_buying_price
+    }
+
+    pub fn max_buying_price(&self) -> u32 {
+        self.max_buying_price
+    }
+
+    pub fn min_selling_prices(&self) -> * const u32 {
+        self.min_selling_prices.as_ptr()
+    }
+
+    pub fn max_selling_prices(&self) -> * const u32 {
+        self.max_selling_prices.as_ptr()
+    }
+}
+
+#[wasm_bindgen]
+pub fn predict(buying_price: u32, selling_prices: Vec<u32>) -> Option<Prediction> {
+    None
+}
+
+#[wasm_bindgen]
+pub fn search(buying_price: i32, selling_prices: Vec<i32>) -> Option<TurnipPrice> {
+    utils::set_panic_hook();
+    
+    let mut selling_prices = selling_prices.clone();
+    while selling_prices.len() < 12 {
+        selling_prices.push(0);
+    }
+    
+    for seed in 0..u32::max_value() {
+        for pattern in 0..3 {
+            let turnip_price = calculate(pattern, seed);
+            if buying_price > 0 && buying_price != turnip_price.buying_price {
+                break;
+            }
+            for i in 0..12 {
+                if selling_prices[i] > 0 || selling_prices[i] != turnip_price.selling_prices[i] {
+                    break;
+                }
+            }
+            return Some(turnip_price);
+        }
+    }
+    None
+}
